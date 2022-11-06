@@ -21,6 +21,13 @@ THEN I should have a registered service worker using workbox
 WHEN I register a service worker
 THEN I should have my static assets pre cached upon loading along with subsequent pages and static assets
 
+Files need code:
+database.js
+install.js
+src-sw.js
+webpack.config.js
+
+
 
 Needed:
 `manifest.json` file
@@ -36,3 +43,26 @@ Uses IndexedDB to create an object store and includes both GET and PUT methods
   * The application should use babel in order to use async / await
   * Application must have a generated `manifest.json` using the `WebpackPwaManifest` plug-in
   * Can be installed as a Progressive Web Application
+
+
+
+ // Creates a manifest.json file.
+      new WebpackPwaManifest({
+        fingerprints: false,
+        inject: true,
+        name: 'Contact Cards',
+        short_name: 'Contact',
+        description: 'Never forget your contacts!',
+        background_color: '#225ca3',
+        theme_color: '#225ca3',
+        start_url: './',
+        publicPath: './',
+        icons: [
+          {
+            src: path.resolve('src/images/logo.png'),
+            sizes: [96, 128, 192, 256, 384, 512],
+            destination: path.join('assets', 'icons'),
+          },
+        ],
+      }),
+    ],
